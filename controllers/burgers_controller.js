@@ -5,11 +5,11 @@ const burger = require("../models/burger");
 
 // Routes
 router.get("/", function(req, res) {
-    res.redirect("/burger");
+   res.redirect("/burgers");
 });
 
 // Index
-router.get("/burger", function(req, res) {
+router.get("/burgers", function(req, res) {
     burger.selectAll(function(data) {
         let hbsObj = { burgers: data};
         res.render("index", hbsObj);
@@ -17,16 +17,22 @@ router.get("/burger", function(req, res) {
 });
 
 // Add a new burger
-router.post("/burger/create", function(req, res) {
-    burger.insertOne(req.body.burger_name, function() {
-        res.redirect("/index");
+router.post("/burgers/create", function(req, res) {
+    burger.insertOne(req.body.burger_name, function(result) {
+        console.log(result)
+        res.redirect("/");
     });
 });
 
 // Eat a burger
-router.post("/burger/eat/:id", function(req, res) {
-    burger.updateOne(req.params.id, function() {
-        res.redirect("/index");
+router.put("/burgers/:id", function(req, res) {
+    burger.updateOne(req.params.id, function(result) {
+        console.log(result);
+        if (result.changedRows == 0) {
+            return res.status(404).end();
+        } else {
+            res.status(200).end();
+        }
     });
 });
 

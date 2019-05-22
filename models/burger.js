@@ -11,17 +11,14 @@ let burger = {
     },
 
     // Add a new burger to the db
-    insertOne: function(burger_name, cb) {
-        orm.insertOne(burger_name, function(res) {
-            cb(res);
-        });
+    insertOne: function(name, cb) {
+        orm.insertOne("burgers", ["burger_name", "devoured"], [name, false], cb);
     },
 
     // Change the devoured state from false to true
-    updateOne: function(burger_id, cb) {
-        orm.updateOne(burger_id, function(res) {
-            cb(res);
-        });
+    updateOne: function(id, cb) {
+        let condition = "id=" + id;
+        orm.updateOne("burgers", { devoured: true }, condition, cb); 
     }
 };
 

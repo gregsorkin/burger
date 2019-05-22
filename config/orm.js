@@ -6,13 +6,17 @@ var connection = require("../config/connection.js");
 // In order to write the query, we need 3 question marks.
 // The above helper function loops through and creates an array of question marks - ["?", "?", "?"] - and turns it into a string.
 // ["?", "?", "?"].toString() => "?,?,?";
+
+// This is mostly garbage that doesn't quite apply to this project, but it was in a million activities and other
+// burger assignments I researched. I'm leaving it in so it doesn't break something elsewhere.
 function printQuestionMarks(num) {
     var arr = [];
   
     for (var i = 0; i < num; i++) {
       arr.push("?");
     }
-  
+    console.log(arr.toString());
+    
     return arr.toString();
   }
   
@@ -42,14 +46,16 @@ function printQuestionMarks(num) {
 // Object for all our SQL statement functions
 let orm = {
     selectAll: function(table, cb) {
-        let queryString = "SELECT * FROM " + table;
+        let queryString = "SELECT * FROM " + table + ";";
         connection.query(queryString, function(err, results) {
             if (err) throw err;
             cb(results);
         });
     },
     insertOne: function(table, column, burgerEntry, cb) {
-        let queryString = "INSERT INTO " + table + "(" + column + ") VALUES (?)";
+        let queryString = "INSERT INTO " + table + "(" + column.toString() + ") VALUES (?)"
+        console.log('query string: ', queryString)
+        // "INSERT INTO BURGERS(burger_name) VALUES(?)"
         connection.query(queryString, [burgerEntry], function(err, results) {
             if (err) throw err;
             cb(results);

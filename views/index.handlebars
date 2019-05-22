@@ -4,17 +4,14 @@
         <h3>Orders up!</h3>
         <div id="orders">
             {{#each burgers}}
-                {{#unless devoured}}
-                <form action="burger/eat/{{id}}" method="POST">
-                    <div class="input">
-                        <li class="formMaintenance">
-                            {{id}}.{{burger_name}}
-                        </li>
-                        <span class="eatButton">
-                            <button class="btn btn-success eatDaBurger" type="submit">Eat Dat Burger!  <i class="fas fa-teeth-open"></i></button>
-                        </span>
-                    </div>
-                </form>
+                {{#unless this.devoured}}
+                <p>{{id}}.{{burger_name}}
+                    <span class="eatButton">
+                        <button class="btn btn-success eatDaBurger" data-id="{{id}}" data-devoured=false type="button">  
+                            {{#if devoured}}Devoured!{{else}}Eat Dat Burger! <i class="fas fa-teeth-open"></i>{{/if}}
+                        </button>
+                    </span>
+                </p>
                 {{/unless}}
             {{/each}}
         </div>
@@ -25,10 +22,10 @@
         <h3>These're going on your tab.</h3>
         <div class="billed">
             {{#each burgers}}
-                {{#if this.devoured}}
+                {{#if devoured}}
                     <div class="input">
                         <li class="formMaintenance">
-                            {{this.id}}.{{this.burger_name}}
+                            {{id}}.{{burger_name}}
                         </li>
                     </div>
                 {{/if}}

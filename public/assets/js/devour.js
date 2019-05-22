@@ -4,7 +4,7 @@ $(document).ready(function() {
   $(".eatDaBurger").on("click", function(event) {
     event.preventDefault();
 
-    let burger_id = $(this).children(".burger_id").val();
+    let burger_id = $(this).attr("data-id");
     console.log(burger_id);
     $.ajax({
       method: "PUT",

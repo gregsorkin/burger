@@ -5,7 +5,7 @@ Node Express Handlebars
 
 In this assignment, you'll create a burger logger with MySQL, Node, Express, Handlebars and a homemade ORM (yum!). Be sure to follow the MVC design pattern; use Node and MySQL to query and route data in your app, and Handlebars to generate your HTML.
 
-Find the live app on Heroku here: [https://blooming-forest-32584.herokuapp.com/] (https://blooming-forest-32584.herokuapp.com/)
+Find the live app on Heroku here: [https://blooming-forest-32584.herokuapp.com/](https://blooming-forest-32584.herokuapp.com/)
 
 ### Before You Begin
 

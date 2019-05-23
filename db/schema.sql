@@ -1,13 +1,9 @@
-DROP DATABASE IF EXISTS burgersDB;
-CREATE DATABASE burgersDB;
-
-USE burgersDB;
-
 CREATE TABLE burgers (
-    id INT NOT NULL AUTO_INCREMENT,
+    id INT AUTO_INCREMENT NOT NULL,
     burger_name VARCHAR(150),
     devoured BOOLEAN,
+    createdAt TIMESTAMP NOT NULL,
     PRIMARY KEY (id)
 );
 
-SELECT * FROM burgers;
+-- SELECT * FROM burgers;
